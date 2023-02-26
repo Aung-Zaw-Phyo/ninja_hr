@@ -1,0 +1,4 @@
+Bootstrap sidebar customized
+====================
+sidebar =>    https://bootsnipp.com/snippets/Q0dAX
+video   =>    no.8
