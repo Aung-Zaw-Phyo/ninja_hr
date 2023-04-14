@@ -1,4 +1,13 @@
 Bootstrap sidebar customized
 ====================
-sidebar =>    https://bootsnipp.com/snippets/Q0dAX
-video   =>    no.8
+sidebar     =>      https://bootsnipp.com/snippets/Q0dAX
+video       =>      no.8
+
+
+Datatable setup
+===================
+video       =>      no. 9,10
+
+
+
+

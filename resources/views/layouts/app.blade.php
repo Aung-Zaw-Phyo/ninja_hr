@@ -19,6 +19,10 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet"/>
 
+    {{-- Datatable --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.material.min.css">
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     @yield('extra_css')
@@ -52,7 +56,7 @@
                     </span>
                 </div>
             </div>
-            <!-- sidebar-header  -->
+
             <div class="sidebar-menu">
                 <ul>
                     <li class="header-menu">
@@ -65,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('employee.index') }}">
                             <i class="fas fa-users"></i>
                             <span>Employees</span>
                         </a>
@@ -89,10 +93,10 @@
                     </li> --}}
                 </ul>
             </div>
-            <!-- sidebar-menu  -->
+
           </div>
         </nav>
-        <!-- sidebar-wrapper  -->
+
         <div class="app-bar">
             <div class="col-md-8 mx-auto d-flex justify-content-between align-items-center">
                 <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
@@ -103,7 +107,9 @@
             </div>
         </div>
         <main class="py-4">
-            @yield('content')
+            <div class="col-md-8 mx-auto">
+                @yield('content')
+            </div>
         </main>
         <div class="bottom-bar">
             <div class="col-md-8 mx-auto d-flex justify-content-between">
@@ -121,7 +127,7 @@
                 </a>
             </div>
         </div>
-        <!-- page-content" -->
+
 
     {{-- Bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -131,6 +137,10 @@
 
     <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    {{-- Datatable --}}
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.material.min.js"></script>
 
     @yield('script')
 

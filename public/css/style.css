@@ -6,11 +6,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .btn-theme{
     background-color: #4CD195 !important;
     color: #fff !important;
+}
+
+.badge {
+    padding: 8px;
+    font-size: 13px;
 }
 
 /* --------------- Header menu ------------------ */
@@ -45,6 +51,22 @@
 .bottom-bar a p{
     font-size: 13px;
 }
+
+
+/* -------------- Datatable -------------- */
+
+.mdc-data-table {
+  width: 100%;
+}
+
+.dataTables_filter input {
+  margin-left: 0 !important;
+}
+
+.mdc-button--colored {
+  background-color: #4CD195 !important;
+}
+
 
 /* ------------------ Sidebar ------------------ */
 
