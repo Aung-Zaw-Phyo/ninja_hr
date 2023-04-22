@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "3.*",
+        "proengsoft/laravel-jsvalidation": "^4.7",
         "yajra/laravel-datatables-oracle": "^9.21.2"
     },
     "require-dev": {

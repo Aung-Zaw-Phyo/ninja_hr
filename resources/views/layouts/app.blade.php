@@ -22,6 +22,9 @@
     {{-- Datatable --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.material.min.css">
+    
+    {{--  Daterange Picker  --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
@@ -46,7 +49,7 @@
                     alt="User picture">
                 </div>
                 <div class="user-info">
-                    <span class="user-name">Jhon
+                    <span class="user-name">John
                     <strong>Smith</strong>
                     </span>
                     <span class="user-role">Administrator</span>
@@ -106,8 +109,8 @@
                 <a href=""></a>
             </div>
         </div>
-        <main class="py-4">
-            <div class="col-md-8 mx-auto">
+        <main class="py-5 content">
+            <div class="col-md-8 mx-auto pb-5">
                 @yield('content')
             </div>
         </main>
@@ -128,7 +131,7 @@
             </div>
         </div>
 
-
+    </div>
     {{-- Bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
@@ -142,11 +145,20 @@
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.material.min.js"></script>
 
+    {{--  Daterange Picker  --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+     {{--  Laravel Javascript Validation   --}}
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
+    {{--  Sweet alert 2   --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @yield('script')
 
     <script>
         jQuery(function ($) {
-
             $(".sidebar-dropdown > a").click(function() {
                 $(".sidebar-submenu").slideUp(200);
                 if (
@@ -173,6 +185,24 @@
                 e.preventDefault();
                 $(".page-wrapper").addClass("toggled");
             });
+
+            document.addEventListener('click', (event) => {
+                if(document.getElementById('show-sidebar').contains(event.target)){
+                    $(".page-wrapper").addClass("toggled");
+                }else if(!document.getElementById('sidebar').contains(event.target)){
+                    $(".page-wrapper").removeClass("toggled");
+                }
+            })
+
+
+            @if (session('create'))
+                Swal.fire({
+                    title: 'Successfully Created!',
+                    text: "{{ session('create') }}",
+                    icon: 'success',
+                    confirmButtonText: 'Containue'
+                })
+            @endif
 
         });
     </script>

@@ -9,5 +9,10 @@ Datatable setup
 video       =>      no. 9,10
 
 
+laravel Jsvalidation  & Sweet alert 2
+=====================
+video       =>      no. 12  (https://github.com/proengsoft/laravel-jsvalidation)
+
+
 
 

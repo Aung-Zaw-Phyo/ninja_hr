@@ -3,7 +3,8 @@
 @section('title', 'Employees')
 
 @section('content')
-    <div class="card">
+    <a href="{{ route('employee.create') }}" class="btn btn-theme"><i class="fas fa-plus-circle"></i> Create Employee</a>
+    <div class="card mt-3">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered DataTable">
@@ -23,7 +24,7 @@
 
 @section('script')
 <script>
-    $(document).ready(function () {  
+    $(document).ready(function () {
         var table = $('.DataTable').DataTable({
             processing: true,
             responsive: true,
@@ -37,13 +38,13 @@
                 {data: 'department', name: 'department', class: 'text-center'},
                 {data: 'is_present', name: 'is_present', class: 'text-center'},
                 // {
-                //     data: 'action', 
-                //     name: 'action', 
-                //     orderable: true, 
+                //     data: 'action',
+                //     name: 'action',
+                //     orderable: true,
                 //     searchable: true
                 // },
             ],
-            
+
         });
         document.querySelector('.DataTable').classList.add('w-100 h-100');
     })
