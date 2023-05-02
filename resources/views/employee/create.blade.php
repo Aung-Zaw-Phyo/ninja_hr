@@ -6,7 +6,7 @@
     <div>
         <form action="{{ route('employee.store') }}" autocomplete="off" id="create-employee" method="POST">
             @csrf
-            <div class="row">
+            <div class="row g-2">
                 <div class="col-lg-6">
                     <div class="form-outline mb-4">
                         <input type="text" name='employee_id' id="employee_id" class="form-control form-control-lg" />

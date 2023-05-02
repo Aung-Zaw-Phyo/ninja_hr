@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmployee;
 use App\Models\Department;
+use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
@@ -28,7 +29,18 @@ class EmployeeController extends Controller
                     return "<span class='badge badge-pill badge-danger'>Leave</span>";
                 }
             })
-            ->rawColumns(['is_present'])
+            ->editColumn('updated_at', function($each) {
+                return Carbon::parse($each->updated_at)->format('Y-m-d H:i:s');
+            })
+            ->addColumn('plus-icon', function($each){
+                return null;
+            })
+            ->addColumn('action', function($each) {
+                $edit_icon = '<a href="'.route('employee.edit', $each->id).'" class="text-warning"><i class="fas fa-edit"></i></a>';
+                $info_icon = '<a href="'.route('employee.show', $each->id).'" class="text-primary"><i class="fas fa-info-circle"></i></a>';
+                return '<div class="action-icon text-start">'.$edit_icon.$info_icon.'</div>';
+            })
+            ->rawColumns(['is_present', 'action'])
             ->make(true);
     }
 

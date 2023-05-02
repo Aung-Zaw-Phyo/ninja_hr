@@ -13,6 +13,8 @@ laravel Jsvalidation  & Sweet alert 2
 =====================
 video       =>      no. 12  (https://github.com/proengsoft/laravel-jsvalidation)
 
-
+Decorate Datatable 
+=====================
+video       =>      no. 13  ( responsive => https://datatables.net/extensions/fixedheader/examples/integration/responsive.html )
 
 

@@ -20,12 +20,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet"/>
 
     {{-- Datatable --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.material.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
     
     {{--  Daterange Picker  --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
+    
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     @yield('extra_css')
@@ -101,7 +101,7 @@
         </nav>
 
         <div class="app-bar">
-            <div class="col-md-8 mx-auto d-flex justify-content-between align-items-center">
+            <div class="col-md-8 mx-auto d-flex justify-content-between align-items-center px-2">
                 <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
                     <i class="fas fa-bars"></i>
                 </a>
@@ -109,13 +109,13 @@
                 <a href=""></a>
             </div>
         </div>
-        <main class="py-5 content">
+        <main class="py-5 px-2 content">
             <div class="col-md-8 mx-auto pb-5">
                 @yield('content')
             </div>
         </main>
         <div class="bottom-bar">
-            <div class="col-md-8 mx-auto d-flex justify-content-between">
+            <div class="col-md-8 mx-auto d-flex justify-content-between px-2">
                 <a href="">
                     <i class="fas fa-home"></i>
                     <p class="mb-0">Home</p>
@@ -142,8 +142,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     {{-- Datatable --}}
-    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.material.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
 
     {{--  Daterange Picker  --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
