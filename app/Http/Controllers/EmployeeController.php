@@ -7,8 +7,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmployee;
+use App\Http\Requests\UpdateEmployee;
 use App\Models\Department;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -66,5 +68,36 @@ class EmployeeController extends Controller
         $employee->save();
 
         return redirect()->route('employee.index')->with('create', 'Employee is successfully created.');
+    }
+
+    public function edit ($id) {
+        $employee = User::findOrFail($id);
+        $departments = Department::get();
+        return view('employee.edit', compact('employee', 'departments'));
+    }
+
+    public function update($id, UpdateEmployee $request) {
+        $employee = User::findOrFail($id);
+        $employee->employee_id = $request->employee_id;
+        $employee->name = $request->name;
+        $employee->email = $request->email;
+        $employee->phone = $request->phone;
+        $employee->nrc_number = $request->nrc_number;
+        $employee->gender = $request->gender;
+        $employee->birthday = $request->birthday;
+        $employee->department_id = $request->department_id;
+        $employee->date_of_join = $request->date_of_join;
+        $employee->is_present = $request->is_present;
+        $employee->address = $request->address;
+        $employee->password = $request->password ? Hash::make($request->password) : $employee->password;
+        $employee->update();
+
+        return redirect()->route('employee.index')->with('update', 'Employee is successfully updated.');
+    }
+
+    
+    public function show ($id) {
+        $employee = User::findOrFail($id);
+        return view('employee.show', compact('employee'));
     }
 }

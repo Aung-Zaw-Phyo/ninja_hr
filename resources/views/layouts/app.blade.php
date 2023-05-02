@@ -205,6 +205,15 @@
                 })
             @endif
 
+            @if (session('update'))
+                Swal.fire({
+                    title: 'Successfully Updated!',
+                    text: "{{ session('update') }}",
+                    icon: 'success',
+                    confirmButtonText: 'Containue'
+                })
+            @endif
+
         });
     </script>
 </body>
