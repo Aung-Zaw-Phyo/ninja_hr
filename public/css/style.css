@@ -142,6 +142,14 @@ table.dataTable{
 }
 
 
+/* ------------------ Preview Image ------------- */
+
+.preview_img img {
+  margin: 3px;
+  width: 80px;
+  border: 1px solid #ddd;
+}
+
 
 
 

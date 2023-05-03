@@ -4,7 +4,7 @@
 
 @section('content')
     <div>
-        <form action="{{ route('employee.update', $employee->id) }}" autocomplete="off" id="edit-employee" method="POST">
+        <form action="{{ route('employee.update', $employee->id) }}" autocomplete="off" id="edit-employee" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row g-2">
@@ -62,6 +62,15 @@
                         <textarea id="address" name='address' class="form-control form-control-lg" rows="3">{{$employee->address}}</textarea>
                         <label class="form-label" for="addreess">Address</label>
                     </div>
+                    <div class=" mb-4">
+                        <input class="form-control form-control-lg m-0" type="file" name="profile_img" id="profile_img" />
+
+                        <div class="preview_img d-flex align-items-start">
+                            @if ($employee->profile_img)
+                                <img src="{{$employee->profile_img_path()}}" alt="">
+                            @endif
+                        </div>
+                    </div>
                     <div class="form-outline mb-4">
                         <input name='password' type="password" id="password" class="form-control form-control-lg password" />
                         <label class="form-label" for="password">password</label>
@@ -107,6 +116,14 @@
         }, function(start, end, label) {
             console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
         });
+
+        $('#profile_img').on('change', function () {
+            let profile_img_length = document.getElementById('profile_img').files.length
+            $('.preview_img').html('')
+            for (let i = 0; i < profile_img_length; i++) {
+                $('.preview_img').append(`<img src="${URL.createObjectURL(event.target.files[i])}"/>`)                
+            }
+        })
 
     })
 </script>

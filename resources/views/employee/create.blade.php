@@ -4,7 +4,7 @@
 
 @section('content')
     <div>
-        <form action="{{ route('employee.store') }}" autocomplete="off" id="create-employee" method="POST">
+        <form action="{{ route('employee.store') }}" autocomplete="off" id="create-employee" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row g-2">
                 <div class="col-lg-6">
@@ -61,6 +61,13 @@
                         <textarea id="address" name='address' class="form-control form-control-lg" rows="3"></textarea>
                         <label class="form-label" for="addreess">Address</label>
                     </div>
+                    <div class=" mb-4">
+                        <input class="form-control form-control-lg m-0" type="file" name="profile_img" id="profile_img" />
+
+                        <div class="preview_img d-flex align-items-start">
+    
+                        </div>
+                    </div>
                     <div class="form-outline mb-4">
                         <input name='password' type="password" id="password" class="form-control form-control-lg password" />
                         <label class="form-label" for="password">password</label>
@@ -88,26 +95,18 @@
             "showDropdowns": true,
             "autoApply": true,
             "maxDate": moment(),
-            // "autoUpdateInput": false,  
             "locale": {
                 "format": "YYYY-MM-DD",
             }, 
         }, function(start, end, label) {
             console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
         });
-
-        // $('.birthday').on('apply.daterangepicker', function(ev, picker) {
-        //     $('.birthday').val(picker.startDate.format('YYYY-MM-DD'));
-        // });
-        // $('.birthday').val('')
-
 
         $('.date_of_join').daterangepicker({
             "singleDatePicker": true,
             "showDropdowns": true,
             "autoApply": true,
             "maxDate": moment(),
-            // "autoUpdateInput": false,
             "locale": {
                 "format": "YYYY-MM-DD",
             }, 
@@ -115,10 +114,14 @@
             console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
         });
 
-        // setTimeout(()=> {
-        //     console.log('hihihi')
-        //     $('.birthday').removeAttr('autofocus')
-        // }, 3000)
+        $('#profile_img').on('change', function () {
+            let profile_img_length = document.getElementById('profile_img').files.length
+            $('.preview_img').html('')
+            for (let i = 0; i < profile_img_length; i++) {
+                $('.preview_img').append(`<img src="${URL.createObjectURL(event.target.files[i])}"/>`)                
+            }
+        })
+
     })
 </script>
 @endsection

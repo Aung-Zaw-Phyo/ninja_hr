@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Yajra\DataTables\Facades\DataTables;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEmployee;
-use App\Http\Requests\UpdateEmployee;
-use App\Models\Department;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateEmployee;
+use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
 
 class EmployeeController extends Controller
 {
@@ -52,6 +53,13 @@ class EmployeeController extends Controller
     }
 
     public function store (StoreEmployee $request) {
+        $profile_img_name = null;
+        if ($request->hasFile('profile_img')) {
+            $profile_img_file = $request->file('profile_img');
+            $profile_img_name = uniqid() . '_' . time() . '.' .$profile_img_file->getClientOriginalExtension();
+            Storage::disk('public')->put('employee/' . $profile_img_name, file_get_contents($profile_img_file));
+        }
+
         $employee = new User();
         $employee->employee_id = $request->employee_id;
         $employee->name = $request->name;
@@ -64,6 +72,7 @@ class EmployeeController extends Controller
         $employee->date_of_join = $request->date_of_join;
         $employee->is_present = $request->is_present;
         $employee->address = $request->address;
+        $employee->profile_img = $profile_img_name;
         $employee->password = $request->password;
         $employee->save();
 
@@ -78,6 +87,16 @@ class EmployeeController extends Controller
 
     public function update($id, UpdateEmployee $request) {
         $employee = User::findOrFail($id);
+
+        $profile_img_name = $employee->profile_img;
+        if ($request->hasFile('profile_img')) {
+            Storage::disk('public')->delete('employee/'.$profile_img_name);
+
+            $profile_img_file = $request->file('profile_img');
+            $profile_img_name = uniqid() . '_' . time() . '.' .$profile_img_file->getClientOriginalExtension();
+            Storage::disk('public')->put('employee/' . $profile_img_name, file_get_contents($profile_img_file));
+        }
+
         $employee->employee_id = $request->employee_id;
         $employee->name = $request->name;
         $employee->email = $request->email;
@@ -89,6 +108,7 @@ class EmployeeController extends Controller
         $employee->date_of_join = $request->date_of_join;
         $employee->is_present = $request->is_present;
         $employee->address = $request->address;
+        $employee->profile_img = $profile_img_name;
         $employee->password = $request->password ? Hash::make($request->password) : $employee->password;
         $employee->update();
 
