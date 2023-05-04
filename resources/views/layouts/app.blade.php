@@ -102,9 +102,16 @@
 
         <div class="app-bar">
             <div class="col-md-8 mx-auto d-flex justify-content-between align-items-center px-2">
-                <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-                    <i class="fas fa-bars"></i>
-                </a>
+                @if (request()->is('/'))
+                    {{-- <a id="show-sidebar" class="btn btn-sm btn-dark" href="#"> --}}
+                    <a id="show-sidebar" class="" href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                @else
+                    <a id="back-btn" class="" href="#">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </a>
+                @endif
                 <h5 class="mb-0">@yield('title')</h5>
                 <a href=""></a>
             </div>
@@ -145,6 +152,8 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/g/mark.js(jquery.mark.min.js)"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.js"></script>
 
     {{--  Daterange Picker  --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -156,10 +165,64 @@
     {{--  Sweet alert 2   --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    {{-- Sweet alert 1 --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     @yield('script')
 
     <script>
+        let token = document.querySelector('meta[name=csrf-token]')
+        if(token) {
+            $.ajaxSetup({
+                headers: { 
+                    'X-CSRF-TOKEN': token.content
+                }
+            });
+        }else {
+            console.error('Token not found!');
+        }
+
         jQuery(function ($) {
+
+            $('#back-btn').on('click', function (e) {
+                e.preventDefault()
+                window.history.go(-1)
+                return false;
+            })
+
+            $.extend(true, $.fn.dataTable.defaults, {
+                mark: true,
+                // responsive: true,
+                // processing: true,
+                // serverSide: true,
+                // language: {
+                //     paginate: {
+                //         next: "<i class='fa-solid fa-circle-arrow-right'></i>",
+                //         previous: "<i class='fa-solid fa-circle-arrow-left'></i>"
+                //     },
+                //     processing: 'processing................'
+                // },
+                // columnDefs: [
+                //     {
+                //         targets: [0],
+                //         class: 'control'
+                //     },
+                //     {
+                //         targets: "no-sort",
+                //         sortable: false
+                //     },
+                //     {
+                //         targets: "no-search",
+                //         searchable: false
+                //     },
+                //     {
+                //         targets: "hidden",
+                //         visible: false
+                //     },
+                    
+                // ],
+            });
+
             $(".sidebar-dropdown > a").click(function() {
                 $(".sidebar-submenu").slideUp(200);
                 if (
@@ -213,6 +276,9 @@
                     confirmButtonText: 'Containue'
                 })
             @endif
+
+
+            
 
         });
     </script>

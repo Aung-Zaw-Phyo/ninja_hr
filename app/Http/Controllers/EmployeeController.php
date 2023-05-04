@@ -20,9 +20,20 @@ class EmployeeController extends Controller
     }
 
     public function ssd () {
-        $data = User::query();
-            return Datatables::of($data)
-            ->addColumn('department', function($each) {
+        $data = User::with('department');
+        return Datatables::of($data)
+            ->filterColumn('department_name', function ($query, $keyword) {
+                $query->whereHas('department', function ($q1) use($keyword){
+                    $q1->where('title', 'like', '%'.$keyword.'%');
+                }); 
+            })
+            ->editColumn('profile_img', function ($each) {
+                if(!$each->profile_img_path()){
+                    return '<p class="py-1">'.$each->name.'</p>';
+                }
+                return '<img class="profile-thumbnail" src="'.$each->profile_img_path().'"/><p class="py-1">'.$each->name.'</p>';
+            })
+            ->addColumn('department_name', function($each) {
                 return $each->department ? $each->department->title : '-';
             })
             ->editColumn('is_present', function($each) {
@@ -41,9 +52,11 @@ class EmployeeController extends Controller
             ->addColumn('action', function($each) {
                 $edit_icon = '<a href="'.route('employee.edit', $each->id).'" class="text-warning"><i class="fas fa-edit"></i></a>';
                 $info_icon = '<a href="'.route('employee.show', $each->id).'" class="text-primary"><i class="fas fa-info-circle"></i></a>';
-                return '<div class="action-icon text-start">'.$edit_icon.$info_icon.'</div>';
+                $delete_icon = '<a href="#" class="text-danger delete-btn" data-id="'.$each->id.'"><i class="fas fa-trash-alt"></i></a>';
+
+                return '<div class="action-icon text-start">'.$edit_icon.$info_icon.$delete_icon.'</div>';
             })
-            ->rawColumns(['is_present', 'action'])
+            ->rawColumns(['profile_img', 'is_present', 'action'])
             ->make(true);
     }
 
@@ -119,5 +132,11 @@ class EmployeeController extends Controller
     public function show ($id) {
         $employee = User::findOrFail($id);
         return view('employee.show', compact('employee'));
+    }
+
+    public function destroy ($id) {
+        $employee = User::findOrFail($id);
+        $employee->delete();
+        return 'success';
     }
 }

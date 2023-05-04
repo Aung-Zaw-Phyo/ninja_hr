@@ -9,6 +9,10 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+body {
+  background: #EDF2F6;
+}
+
 .btn{
     font-size: 14px;
 }
@@ -23,12 +27,22 @@
     font-size: 13px;
 }
 
+.table th, .table td {
+  vertical-align: middle;
+}
+
+#back-btn, #show-sidebar {
+  color: #333;
+  font-size: 22px;
+  padding: 10px;
+}
 
 /* --------------- Header menu ------------------ */
 
 .app-bar {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
     padding: 12px 0;
+    background-color: white;
 }
 
 /* --------------- Header menu ------------------ */
@@ -105,10 +119,18 @@ table.dataTable{
   font-size: 16px;
   padding: 10px;
   margin: 5px;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   line-height: 19px;
   border-radius: 0.25rem;
+}
+
+.dtr-details li{
+  text-align: start !important;
+}
+
+mark{
+  background: #4CD195;
 }
 
 
@@ -149,6 +171,33 @@ table.dataTable{
   width: 80px;
   border: 1px solid #ddd;
 }
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+  padding: 3px;
+  border: 1px solid #4CD195;
+}
+
+.dash-border {
+  border-left: 2px dashed #ddd;
+}
+
+.profile-thumbnail {
+  width: 65px;
+  height: 65px;
+  padding: 3px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
 
 
 

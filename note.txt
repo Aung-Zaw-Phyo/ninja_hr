@@ -23,3 +23,8 @@ Upload Image
 * Get image path url from Model
 ide => no. 18, 19
 
+
+Search highlighting with mark.js in Datatable
+======================
+ide => no. 23
+
