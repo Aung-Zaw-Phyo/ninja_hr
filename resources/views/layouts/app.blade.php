@@ -45,14 +45,12 @@
             </div>
             <div class="sidebar-header">
                 <div class="user-pic">
-                    <img class="img-responsive img-rounded" src="{{ asset('images/profile.png') }}"
+                    <img class="img-responsive img-rounded" src="{{ auth()->user()->profile_img_path() }}"
                     alt="User picture">
                 </div>
                 <div class="user-info">
-                    <span class="user-name">John
-                    <strong>Smith</strong>
-                    </span>
-                    <span class="user-role">Administrator</span>
+                    <span class="user-name">{{ auth()->user()->name }}</span>
+                    <span class="user-role">{{ auth()->user()->department ? auth()->user()->department->title : '-' }}</span>
                     <span class="user-status">
                     <i class="fa fa-circle"></i>
                     <span>Online</span>
@@ -123,7 +121,7 @@
         </main>
         <div class="bottom-bar">
             <div class="col-md-8 mx-auto d-flex justify-content-between px-2">
-                <a href="">
+                <a href="{{ route('home') }}">
                     <i class="fas fa-home"></i>
                     <p class="mb-0">Home</p>
                 </a>
@@ -134,6 +132,10 @@
                 <a href="">
                     <i class="fas fa-home"></i>
                     <p class="mb-0">Home</p>
+                </a>
+                <a href="{{ route('profile.profile') }}">
+                    <i class="fas fa-user"></i>
+                    <p class="mb-0">Profile</p>
                 </a>
             </div>
         </div>

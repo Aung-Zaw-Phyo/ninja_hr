@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -22,9 +22,13 @@ body {
     color: #fff !important;
 }
 
+.text-theme {
+  color: #4CD195;
+}
+
 .badge {
-    padding: 8px;
-    font-size: 13px;
+    padding: 6px 10px;
+    font-size: 14px;
 }
 
 .table th, .table td {
@@ -59,7 +63,7 @@ body {
 }
 
 .bottom-bar a{
-    padding: 10px 0;
+    padding: 10px;
     color: #000;
     text-align: center;
 
@@ -173,8 +177,8 @@ mark{
 }
 
 .profile-img {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 100%;
   padding: 3px;
   border: 1px solid #4CD195;
@@ -285,6 +289,7 @@ mark{
 
   .page-wrapper.toggled .sidebar-wrapper {
     left: 0px;
+    background-color: #2D3747;
   }
 
   @media screen and (min-width: 768px) {
@@ -369,6 +374,9 @@ mark{
     object-fit: cover;
     height: 100%;
     width: 100%;
+    /* background: #eee; */
+    border-radius: 10px;
+    padding: 3px;
   }
 
   .sidebar-wrapper .sidebar-header .user-info {
@@ -585,13 +593,13 @@ mark{
   /*-----------------------------chiller-theme-------------------------------------------------*/
 
   .chiller-theme .sidebar-wrapper {
-      background: #31353D;
+      background: #2D3747;
   }
 
   .chiller-theme .sidebar-wrapper .sidebar-header,
   .chiller-theme .sidebar-wrapper .sidebar-search,
   .chiller-theme .sidebar-wrapper .sidebar-menu {
-      border-top: 1px solid #3a3f48;
+      border-top: 1px solid #2D3747;
   }
 
   .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
@@ -630,7 +638,7 @@ mark{
   .chiller-theme .sidebar-wrapper .sidebar-dropdown .sidebar-submenu li a:hover:before,
   .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu:focus+span,
   .chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active a i {
-      color: #16c7ff;
+      color: #4CD195;
       text-shadow:0px 0px 10px rgba(22, 199, 255, 0.5);
   }
 
