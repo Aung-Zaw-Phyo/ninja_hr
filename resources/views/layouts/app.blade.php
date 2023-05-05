@@ -75,6 +75,12 @@
                             <span>Employees</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('department.index') }}">
+                            <i class="fas fa-users"></i>
+                            <span>Departments</span>
+                        </a>
+                    </li>
                     
                     {{-- <li class="sidebar-dropdown">
                         <a href="#">
@@ -252,13 +258,16 @@
                 $(".page-wrapper").addClass("toggled");
             });
 
-            document.addEventListener('click', (event) => {
-                if(document.getElementById('show-sidebar').contains(event.target)){
-                    $(".page-wrapper").addClass("toggled");
-                }else if(!document.getElementById('sidebar').contains(event.target)){
-                    $(".page-wrapper").removeClass("toggled");
-                }
-            })
+            @if (request()->is('/')) {
+                document.addEventListener('click', (event) => {
+                    if(document.getElementById('show-sidebar').contains(event.target)){
+                        $(".page-wrapper").addClass("toggled");
+                    }else if(!document.getElementById('sidebar').contains(event.target)){
+                        $(".page-wrapper").removeClass("toggled");
+                    }
+                })
+            }
+            @endif
 
 
             @if (session('create'))
