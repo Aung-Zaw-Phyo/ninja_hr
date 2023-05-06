@@ -3,7 +3,9 @@
 @section('title', 'Department')
 
 @section('content')
-    <a href="{{ route('department.create') }}" class="btn btn-theme"><i class="fas fa-plus-circle"></i> Create Employee</a>
+    @can('create_department')
+        <a href="{{ route('department.create') }}" class="btn btn-theme"><i class="fas fa-plus-circle"></i> Create Employee</a>
+    @endcan
     <div class="card mt-3">
         <div class="card-body">
             <div class="">

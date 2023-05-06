@@ -28,3 +28,9 @@ Search highlighting with mark.js in Datatable
 ======================
 ide => no. 23
 
+Laravel spatie permission
+======================
+ide => no. 27 28 29 30 31      (https://spatie.be/docs/laravel-permission/v5/introduction)
+
+Many to Many relationship use pivot table
+

@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Create Department')
+@section('title', 'Create Permission')
 
 @section('content')
     <div>
-        <form action="{{ route('department.store') }}" autocomplete="off" id="create-department" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('permission.store') }}" autocomplete="off" id="create-permission" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card">
                 <div class="card-body">
                     <div class="row g-2">
                         <div class="col-lg-12">
                             <div class="form-outline mb-4">
-                                <input type="text" name='title' id="title" class="form-control form-control-lg" />
-                                <label class="form-label" for="title">Title</label>
+                                <input type="text" name='name' id="name" class="form-control form-control-lg" />
+                                <label class="form-label" for="name">Name</label>
                             </div>
                         </div>
                         <div class="col-lg-6 mx-auto">
@@ -30,7 +30,7 @@
 
 @section('script')
 
-{!! JsValidator::formRequest('App\Http\Requests\StoreDepartment', '#create-department') !!}
+{!! JsValidator::formRequest('App\Http\Requests\StorePermission', '#create-permission') !!}
 <script>
     $(document).ready(function () {
 

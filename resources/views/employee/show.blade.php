@@ -16,6 +16,11 @@
                             <h4>{{$employee->name}}</h4>
                             <p class="mb-2 text-muted"><span>{{$employee->employee_id}}</span> | <span class="text-theme">{{ $employee->phone }}</span></p>
                             <p class="mb-2"><span class="badge badge-pill badge-light">{{$employee->department ? $employee->department->title : '-'}}</span></p>
+                            <p class="mb-2">
+                                @foreach ($employee->roles as $role)
+                                    <span class="badge badge-pill badge-primary m-1">{{$role->name}}</span>
+                                @endforeach
+                            </p>
                         </div>
                     </div>
                 </div>

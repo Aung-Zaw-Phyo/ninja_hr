@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="card">
+    <div class="card mb-3">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
@@ -16,6 +16,11 @@
                             <h4>{{$employee->name}}</h4>
                             <p class="mb-2 text-muted"><span>{{$employee->employee_id}}</span> | <span class="text-theme">{{ $employee->phone }}</span></p>
                             <p class="mb-2"><span class="badge badge-pill badge-light">{{$employee->department ? $employee->department->title : '-'}}</span></p>
+                            <p class="mb-2">
+                                @foreach ($employee->roles as $role)
+                                    <span class="badge badge-pill badge-primary m-1">{{$role->name}}</span>
+                                @endforeach
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -40,4 +45,42 @@
         </div>
     </div>
 
+    
+    <div class="card mb-3">
+        <div class="card-body">
+            <a href="#" class="btn btn-theme btn-block logout-btn"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+        </div>
+    </div>
+
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $('.logout-btn').on('click', function (e) {
+                e.preventDefault()
+                swal({
+                    text: "Are you sure you want to logout?",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: '/logout',
+                            type: 'POST',
+                            dataType: 'json',
+                            success: function(res){
+                                window.location.reload()
+                            },
+                            error: function(res){
+                                console.log(res)
+                            }
+                        })
+                    } 
+                });
+                
+            })
+        })
+    </script>
 @endsection

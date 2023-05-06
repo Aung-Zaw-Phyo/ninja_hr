@@ -20,6 +20,7 @@ body {
 .btn-theme{
     background-color: #4CD195 !important;
     color: #fff !important;
+    padding: 12px 15px;
 }
 
 .text-theme {
@@ -29,6 +30,10 @@ body {
 .badge {
     padding: 6px 10px;
     font-size: 14px;
+}
+
+.table th {
+  font-weight:600;
 }
 
 .table th, .table td {
@@ -200,9 +205,18 @@ mark{
 
 
 
+/* ---------------- select 2 -------------------- */
 
+.select2-container .select2-selection--single {
+  height: 44px;
+  padding: 8px;
+}
 
-
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 50%;
+  bottom: 50%;
+  transform: translateY(-50%);
+}
 
 
 
