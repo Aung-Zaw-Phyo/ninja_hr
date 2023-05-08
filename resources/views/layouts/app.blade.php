@@ -68,7 +68,7 @@
                         <span>Menu</span>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/">
                             <i class="fas fa-home"></i>
                             <span>Home</span>
                         </a>
@@ -78,6 +78,14 @@
                         <a href="{{ route('employee.index') }}">
                             <i class="fas fa-users"></i>
                             <span>Employees</span>
+                        </a>
+                    </li>
+                    @endcan
+                    @can('view_company_setting')
+                    <li>
+                        <a href="{{ route('company-setting.show', 1) }}">
+                            <i class="fa-sharp fa-solid fa-building"></i>
+                            <span>Company Setting</span>
                         </a>
                     </li>
                     @endcan

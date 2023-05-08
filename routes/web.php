@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\CompanySettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +41,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('permission', PermissionController::class);
     Route::get('permission/datatable/ssd', [PermissionController::class, 'ssd']);
 
-    
+    Route::resource('company-setting', CompanySettingController::class)->only(['show', 'edit', 'update']);
 });

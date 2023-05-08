@@ -30,7 +30,11 @@ ide => no. 23
 
 Laravel spatie permission
 ======================
-ide => no. 27 28 29 30 31      (https://spatie.be/docs/laravel-permission/v5/introduction)
+ide => no. 27 28 29 30 31 32 33 34      (https://spatie.be/docs/laravel-permission/v5/introduction)
 
 Many to Many relationship use pivot table
 
+
+Work with time picker 
+======================
+ide => no. 36

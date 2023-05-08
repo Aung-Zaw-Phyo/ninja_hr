@@ -218,6 +218,12 @@ mark{
   transform: translateY(-50%);
 }
 
+/* --------------- Date range picker ---------------- */
+
+.daterangepicker .calendar-time {
+  padding-right: 8px !important;
+}
+
 
 
 /* ------------------ Sidebar ------------------ */
