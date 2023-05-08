@@ -9,6 +9,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CompanySettingController;
+use App\Http\Controllers\Auth\WebAuthnRegisterController;
+use App\Http\Controllers\Auth\WebAuthnLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,17 @@ use App\Http\Controllers\CompanySettingController;
 
 
 Auth::routes(['register' => false]);
+
+Route::post('webauthn/register/options', [WebAuthnRegisterController::class, 'options'])
+     ->name('webauthn.register.options');
+Route::post('webauthn/register', [WebAuthnRegisterController::class, 'register'])
+     ->name('webauthn.register');
+
+Route::post('webauthn/login/options', [WebAuthnLoginController::class, 'options'])
+     ->name('webauthn.login.options');
+Route::post('webauthn/login', [WebAuthnLoginController::class, 'login'])
+     ->name('webauthn.login');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [PagesController::class, 'home'])->name('home');
