@@ -225,6 +225,57 @@ mark{
 }
 
 
+/* --------------- Biometric Registration -------------- */
+
+.biometric-register-btn, .biometric-data {
+  width: 110px;
+  height: 110px;
+  padding: 16px;
+  box-shadow: none;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  position: relative;
+  text-transform: none;
+}
+
+.biometric-register-btn:hover, .biometric-data:hover {
+  box-shadow: none !important;
+  border: 1px solid #ddd !important;
+}
+
+.biometric-register-btn:focus, .biometric-data:focus {
+  box-shadow: none !important;
+  border: 1px solid #ddd !important;
+}
+
+
+.biometric-register-btn i.fa-fingerprint, .biometric-data i.fa-fingerprint {
+  font-size: 50px;
+}
+
+.biometric-data i.fa-fingerprint{
+  color: #FE4F60;
+}
+
+.biometric-data p{
+  font-size: 13px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------ Sidebar ------------------ */
 

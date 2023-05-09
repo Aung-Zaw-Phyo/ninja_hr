@@ -45,6 +45,21 @@
         </div>
     </div>
 
+    <div class="card mb-3">
+        <div class="card-body">
+            
+            <span class="biometric-data-container">
+
+            </span>
+
+            <button class="btn biometric-register-btn" id="biometric-register-btn">
+                <i class="fa-solid fa-fingerprint"></i>
+                <p class="mb-0 mt-1">
+                    <i class="fa-sharp fa-solid fa-circle-plus"></i>
+                </p>
+            </button>
+        </div>
+    </div>
     
     <div class="card mb-3">
         <div class="card-body">
@@ -57,6 +72,45 @@
 @section('script')
     <script>
         $(document).ready(function () {
+            const getBiometricData = () => {
+                $.ajax({
+                    url: '/profile/biometric-data',
+                    type: 'POST',
+                    success: function(res){
+                        $('.biometric-data-container').html(res);
+                    },
+                    error: function(res){
+                        console.log(res);
+                    }
+                })
+            }
+            getBiometricData()
+
+            // Registering credentials 
+            const register = (event) => {
+                event.preventDefault()
+                $('.biometric-register-btn').attr('disabled', 'disabled');
+                new Larapass({
+                    register: 'webauthn/register',
+                    registerOptions: 'webauthn/register/options'
+                }).register()
+                .then(response => {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Biometric data successfully created.'
+                    })
+                    getBiometricData()
+                    $('.biometric-register-btn').removeAttr('disabled');
+                })
+                .catch(response => {
+                    console.log(response)
+                    $('.biometric-register-btn').removeAttr('disabled');
+                })
+            }
+
+            document.getElementById('biometric-register-btn').addEventListener('click', register)
+
+
             $('.logout-btn').on('click', function (e) {
                 e.preventDefault()
                 swal({

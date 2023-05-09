@@ -216,6 +216,7 @@
     @yield('script')
 
     <script>
+
         let token = document.querySelector('meta[name=csrf-token]')
         if(token) {
             $.ajaxSetup({
@@ -226,6 +227,19 @@
         }else {
             console.error('Token not found!');
         }
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
 
         jQuery(function ($) {
 
@@ -326,7 +340,6 @@
                     confirmButtonText: 'Containue'
                 })
             @endif
-
 
             
 

@@ -43,3 +43,13 @@ ide => no. 36
 Laravel version upgrade to 8 from 7
 ======================
 ide => no. 38
+
+
+Larapass 
+======================
+ide => no. 39 40 41 
+
+
+Component view render with ajax
+=======================
+ide => no. 42
