@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Permission')
+@section('title', 'Attendance')
 
 @section('content')
-    @can('create_department')
-        <a href="{{ route('permission.create') }}" class="btn btn-theme"><i class="fas fa-plus-circle"></i> Create Permission</a>
+    @can('create_attendance')
+        <a href="{{ route('attendance.create') }}" class="btn btn-theme"><i class="fas fa-plus-circle"></i> Create Attendance</a>
     @endcan
     <div class="card mt-3">
         <div class="card-body">
@@ -12,10 +12,12 @@
                 <table class="table border table-bordered DataTable"  style="width:100%">
                     <thead>
                         <th class="no-sort no-search"></th>
-                        <th>Name</th>
-                        <th class=" no-search ">Created At</th>
-                        <th class=" no-search ">Updated At</th>
+                        <th>Employee</th>
+                        <th>Date</th>
+                        <th>Checkin Time</th>
+                        <th>Checkout Time</th>
                         <th class="no-sort">Action</th>
+                        <th class="hidden no-search ">Updated At</th>
                     </thead>
                 </table>
             </div>
@@ -30,13 +32,15 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            ajax: "permission/datatable/ssd",
+            ajax: "attendance/datatable/ssd",
             columns: [
                 {data: 'plus-icon', name: 'plus-icon', class: 'text-center'},
-                {data: 'name', name: 'name', class: 'text-center'},
-                {data: 'created_at', name: 'updated_at', class: 'text-center'},
-                {data: 'updated_at', name: 'updated_at', class: 'text-center'},
+                {data: 'employee_name', name: 'employee_name', class: 'text-center'},
+                {data: 'date', name: 'date', class: 'text-center'},
+                {data: 'checkin_time', name: 'checkin_time', class: 'text-center'},
+                {data: 'checkout_time', name: 'checkout_time', class: 'text-center'},
                 {data: 'action', name: 'action', class: 'text-center'},
+                {data: 'updated_at', name: 'updated_at', class: 'text-center'},
             ],
             order: [[3, 'desc']],
             columnDefs: [
@@ -78,7 +82,7 @@
             .then((willDelete) => {
                 if (willDelete) {
                     $.ajax({
-                        url: `/permission/${id}`,
+                        url: `/attendance/${id}`,
                         method: "DELETE"
                     }).done(function(res) {
                         if(res == 'success') {

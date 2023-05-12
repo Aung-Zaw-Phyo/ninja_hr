@@ -208,14 +208,18 @@ mark{
 /* ---------------- select 2 -------------------- */
 
 .select2-container .select2-selection--single {
-  height: 44px;
-  padding: 8px;
+  height: 44px !important;
+  padding: 8px !important;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   top: 50%;
   bottom: 50%;
   transform: translateY(-50%);
+}
+
+.select2-container--default .select2-selection--multiple {
+  height: 44px !important;
 }
 
 /* --------------- Date range picker ---------------- */
@@ -227,9 +231,9 @@ mark{
 
 /* --------------- Biometric Registration -------------- */
 
-.biometric-register-btn, .biometric-data {
-  width: 110px;
-  height: 110px;
+.biometric-auth-btn, .biometric-data {
+  width: 120px;
+  height: 120px;
   padding: 16px;
   box-shadow: none;
   border: 1px solid #ddd;
@@ -238,18 +242,18 @@ mark{
   text-transform: none;
 }
 
-.biometric-register-btn:hover, .biometric-data:hover {
+.biometric-auth-btn:hover, .biometric-data:hover {
   box-shadow: none !important;
   border: 1px solid #ddd !important;
 }
 
-.biometric-register-btn:focus, .biometric-data:focus {
+.biometric-auth-btn:focus, .biometric-data:focus {
   box-shadow: none !important;
   border: 1px solid #ddd !important;
 }
 
 
-.biometric-register-btn i.fa-fingerprint, .biometric-data i.fa-fingerprint {
+.biometric-auth-btn i.fa-fingerprint, .biometric-data i.fa-fingerprint {
   font-size: 50px;
 }
 
@@ -262,6 +266,26 @@ mark{
 
 }
 
+.biometric-delete-btn {
+  color: #FE4F60;
+  background-color: #f5f5f5;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 100%;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  z-index: 99;
+}
+
+.nav-pills .nav-link.active {
+  color: #4CD195 !important;
+}
+
+.nav-fill .nav-item .nav-link, .nav-justified .nav-item .nav-link {
+  font-weight: 600 !important;
+}
 
 
 

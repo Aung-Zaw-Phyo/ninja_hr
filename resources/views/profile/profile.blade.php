@@ -52,7 +52,7 @@
 
             </span>
 
-            <button class="btn biometric-register-btn" id="biometric-register-btn">
+            <button class="btn biometric-auth-btn" id="biometric-register-btn">
                 <i class="fa-solid fa-fingerprint"></i>
                 <p class="mb-0 mt-1">
                     <i class="fa-sharp fa-solid fa-circle-plus"></i>
@@ -89,7 +89,7 @@
             // Registering credentials 
             const register = (event) => {
                 event.preventDefault()
-                $('.biometric-register-btn').attr('disabled', 'disabled');
+                $('#biometric-register-btn').attr('disabled', 'disabled');
                 new Larapass({
                     register: 'webauthn/register',
                     registerOptions: 'webauthn/register/options'
@@ -100,11 +100,11 @@
                         title: 'Biometric data successfully created.'
                     })
                     getBiometricData()
-                    $('.biometric-register-btn').removeAttr('disabled');
+                    $('#biometric-register-btn').removeAttr('disabled');
                 })
                 .catch(response => {
                     console.log(response)
-                    $('.biometric-register-btn').removeAttr('disabled');
+                    $('#biometric-register-btn').removeAttr('disabled');
                 })
             }
 
@@ -134,6 +134,30 @@
                     } 
                 });
                 
+            })
+
+            $(document).on('click', '.biometric-delete-btn', function (event) {
+                event.preventDefault()
+                let id = $(this).data('id')
+                swal({
+                    text: "Are you sure you want to delete?",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: `/profile/biometric-data/delete/${id}`,
+                            type: 'DELETE',
+                            success: function(res){
+                                getBiometricData()
+                            },
+                            error: function(res){
+                                console.log(res)
+                            }
+                        })
+                    } 
+                });
             })
         })
     </script>

@@ -42,7 +42,7 @@
                                 <label class="form-label" for="birthday">Birthday</label>
                             </div>
                             <div class=" mb-4">
-                                <select type="text" name="department_id" id="department" class="form-select form-control-lg">
+                                <select type="text" name="department_id" id="department" class="form-select form-control-lg select-ninja">
                                     @foreach ($departments as $department)
                                         <option value="{{ $department->id }}" @if ($employee->department_id == $department->id) selected @endif>{{ $department->title }}</option>
                                     @endforeach
@@ -79,6 +79,10 @@
                                         <img src="{{$employee->profile_img_path()}}" alt="">
                                     @endif
                                 </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input name='pin_code' type="number" id="pin_code" class="form-control form-control-lg pin_code" value="{{ $employee->pin_code }}"/>
+                                <label class="form-label" for="pin_code">PIN Code</label>
                             </div>
                             <div class="form-outline mb-4">
                                 <input name='password' type="password" id="password" class="form-control form-control-lg password" />

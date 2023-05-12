@@ -36,6 +36,7 @@ class StoreEmployee extends FormRequest
             "is_present" => 'required',
             "address" => 'required',
             "password" => 'required',
+            "pin_code" => 'required|min:6|max:6|unique:users,pin_code',
         ];
     }
 }

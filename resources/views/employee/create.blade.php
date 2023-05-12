@@ -78,6 +78,10 @@
                                 </div>
                             </div>
                             <div class="form-outline mb-4">
+                                <input name='pin_code' type="number" id="pin_code" class="form-control form-control-lg pin_code" />
+                                <label class="form-label" for="pin_code">PIN Code</label>
+                            </div>
+                            <div class="form-outline mb-4">
                                 <input name='password' type="password" id="password" class="form-control form-control-lg password" />
                                 <label class="form-label" for="password">password</label>
                             </div>

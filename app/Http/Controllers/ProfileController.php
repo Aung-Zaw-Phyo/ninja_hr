@@ -18,4 +18,10 @@ class ProfileController extends Controller
         $biometrics = DB::table('web_authn_credentials')->where('user_id', $employee->id)->get();
         return view('components.biometric_data', compact('employee', 'biometrics'))->render();
     }
+
+    public function biometricDataDestroy ($id) {
+        $employee = auth()->user();
+        $biometric = DB::table('web_authn_credentials')->where('id', $id)->where('user_id', $employee->id)->delete();
+        return 'success';
+    }
 }

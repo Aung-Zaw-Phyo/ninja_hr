@@ -26,7 +26,10 @@ class PermissionController extends Controller
         $data = Permission::query();
         return Datatables::of($data)
             ->editColumn('updated_at', function($each) {
-                return Carbon::parse($each->updated_at)->format('Y-m-d H:i:s');
+                return Carbon::parse($each->updated_at)->toDateTimeString();
+            })
+            ->editColumn('created_at', function($each) {
+                return Carbon::parse($each->updated_at)->toDateTimeString();
             })
             ->addColumn('plus-icon', function($each){
                 return null;

@@ -53,3 +53,13 @@ ide => no. 39 40 41
 Component view render with ajax
 =======================
 ide => no. 42
+
+
+pin code ui with npm package | laravel QR code generator (simplesoftware.io)
+=======================
+ide => no. 47 48
+
+dynamic checkin checkout with date 
+=======================
+ide => no. 50
+

@@ -24,4 +24,17 @@ class WebAuthnLoginController extends Controller
     {
         $this->middleware(['guest', 'throttle:10,1']);
     }
+
+
+    protected function optionRules(): array
+    {
+        return [
+            $this->username() => 'required',
+        ];
+    }
+
+    protected function username(): string
+    {
+        return 'phone';
+    }
 }
