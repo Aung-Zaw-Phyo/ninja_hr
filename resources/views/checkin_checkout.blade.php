@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <div class="text-center my-3">
                         <h3 class="mb-3">QR</h3>
-                        <img class="mb-3" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(200)->generate('Make me into an QrCode!')) !!} ">
+                        <img class="mb-3" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(200)->generate($hash_value)) !!} ">
                         <p class="text-muted">Please scan QR to check in or checkout</p>
                     </div>
                     <hr>

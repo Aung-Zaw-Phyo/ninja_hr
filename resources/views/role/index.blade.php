@@ -3,7 +3,7 @@
 @section('title', 'Role')
 
 @section('content')
-    @can('create_department')
+    @can('create_role')
         <a href="{{ route('role.create') }}" class="btn btn-theme"><i class="fas fa-plus-circle"></i> Create Role</a>
     @endcan
     <div class="card mt-3">

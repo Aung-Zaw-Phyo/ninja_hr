@@ -2,29 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\CompanySetting;
 use App\Models\CheckinCheckout;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
-class CheckinCheckoutController extends Controller
+class AttendanceScanController extends Controller
 {
-    public function CheckInCheckOut () {
-        $hash_value = Hash::make(date('Y-m-d'));
-        return view('checkin_checkout', compact('hash_value'));
+    public function scan () {
+        return view('attendance_scan');
     }
 
-    public function CheckInCheckOutStore (Request $request) {
-        $employee = User::where('pin_code', $request->pin_code)->first();
-
-        if(!$employee) {
+    public function scanStore (Request $request) {
+        if(!Hash::check(date('Y-m-d'), $request->hash_value)) {
             return [
                 'status' => 'fail',
-                'message' => 'Pin Code is wrong.'
-            ];
+                'message' => 'QR is invalid.'
+            ];  
         }
+
+        $employee = auth()->user();
 
         $checkin_checkout_data = CheckinCheckout::firstOrCreate(
             [
@@ -58,4 +54,5 @@ class CheckinCheckoutController extends Controller
         ];
 
     }
+    
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AttendanceScanController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
@@ -66,6 +67,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('attendance', AttendanceController::class);
     Route::get('attendance/datatable/ssd', [AttendanceController::class, 'ssd']);
+
+    Route::get('attendance-scan', [AttendanceScanController::class, 'scan'])->name('attendance-scan');
+    Route::post('attendance-scan/store', [AttendanceScanController::class, 'scanStore'])->name('attendance-scan.store');
 
     Route::resource('company-setting', CompanySettingController::class)->only(['show', 'edit', 'update']);
 });
