@@ -120,6 +120,14 @@
                         </a>
                     </li>
                     @endcan
+                    @can('view_attendance_overview')
+                    <li>
+                        <a href="{{ route('attendance.overview') }}">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            <span>Attendance Overview</span>
+                        </a>
+                    </li>
+                    @endcan
                     
                     {{-- <li class="sidebar-dropdown">
                         <a href="#">
@@ -144,7 +152,7 @@
         </nav>
 
         <div class="app-bar">
-            <div class="col-md-8 mx-auto d-flex justify-content-between align-items-center px-2">
+            <div class="col-md-10 mx-auto d-flex justify-content-between align-items-center px-2">
                 @if (request()->is('/'))
                     {{-- <a id="show-sidebar" class="btn btn-sm btn-dark" href="#"> --}}
                     <a id="show-sidebar" class="" href="#">
@@ -160,12 +168,12 @@
             </div>
         </div>
         <main class="py-5 px-2 content">
-            <div class="col-md-8 mx-auto pb-5">
+            <div class="col-md-10 mx-auto pb-5">
                 @yield('content')
             </div>
         </main>
         <div class="bottom-bar">
-            <div class="col-md-8 mx-auto d-flex justify-content-between px-2">
+            <div class="col-md-10 mx-auto d-flex justify-content-between px-2">
                 <a href="{{ route('home') }}">
                     <i class="fas fa-home"></i>
                     <p class="mb-0">Home</p>
