@@ -80,6 +80,14 @@
                         </a>
                     </li>
                     @endcan
+                    @can('view_salary')
+                    <li>
+                        <a href="{{ route('salary.index') }}">
+                            <i class="fa-solid fa-money-bill"></i>
+                            <span>Salary</span>
+                        </a>
+                    </li>
+                    @endcan
                     @can('view_company_setting')
                     <li>
                         <a href="{{ route('company-setting.show', 1) }}">
