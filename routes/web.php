@@ -7,10 +7,11 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AttendanceController;
-use App\Http\Controllers\AttendanceScanController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\MyAttendanceController;
+use App\Http\Controllers\AttendanceScanController;
 use App\Http\Controllers\CompanySettingController;
 use App\Http\Controllers\CheckInCheckOutController;
 use App\Http\Controllers\Auth\WebAuthnLoginController;
@@ -67,11 +68,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('attendance', AttendanceController::class);
     Route::get('attendance/datatable/ssd', [AttendanceController::class, 'ssd']);
+
     Route::get('attendance-overview', [AttendanceController::class, 'overview'])->name('attendance.overview');
-    Route::get('attendance-overview-table', [AttendanceController::class, 'overviewTable'])->name('attendance.overview-');
+    Route::get('attendance-overview-table', [AttendanceController::class, 'overviewTable']);
 
     Route::get('attendance-scan', [AttendanceScanController::class, 'scan'])->name('attendance-scan');
     Route::post('attendance-scan/store', [AttendanceScanController::class, 'scanStore'])->name('attendance-scan.store');
+    Route::get('my-attendance-overview-table', [MyAttendanceController::class, 'overviewTable']);
+    Route::get('my-attendance/datatable/ssd', [MyAttendanceController::class, 'ssd']);
 
     Route::resource('company-setting', CompanySettingController::class)->only(['show', 'edit', 'update']);
 });

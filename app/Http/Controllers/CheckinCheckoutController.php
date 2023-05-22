@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\CompanySetting;
@@ -17,6 +18,13 @@ class CheckinCheckoutController extends Controller
     }
 
     public function CheckInCheckOutStore (Request $request) {
+        if(Carbon::now()->isSaturday() || Carbon::now()->isSunday()){
+            return [
+                'status' => 'fail',
+                'message' => 'Today is off day'
+            ];
+        }
+        
         $employee = User::where('pin_code', $request->pin_code)->first();
 
         if(!$employee) {

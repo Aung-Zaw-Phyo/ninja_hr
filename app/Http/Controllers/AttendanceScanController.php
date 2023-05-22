@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\CheckinCheckout;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,13 @@ class AttendanceScanController extends Controller
     }
 
     public function scanStore (Request $request) {
+        if(Carbon::now()->isSaturday() || Carbon::now()->isSunday()){
+            return [
+                'status' => 'fail',
+                'message' => 'Today is off day'
+            ];
+        }
+        
         if(!Hash::check(date('Y-m-d'), $request->hash_value)) {
             return [
                 'status' => 'fail',

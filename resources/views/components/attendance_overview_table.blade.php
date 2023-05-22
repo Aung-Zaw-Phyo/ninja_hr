@@ -1,9 +1,9 @@
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <thead>
             <th>Employee</th>
             @foreach ($periods as $period)
-            <th>{{ $period->format('d') }}</th>
+            <th class="text-center" @if ($period->format('D') == 'Sat' || $period->format('D') == 'Sun') class="border-0" style="background-color: #ddd;" @endif >{{ $period->format('d') }} <br/> {{ $period->format('D') }}</th>
             @endforeach
         </thead>
         <tbody>
@@ -38,7 +38,7 @@
                             }
                         }
                     @endphp
-                    <td>
+                    <td class="text-center" @if ($period->format('D') == 'Sat' || $period->format('D') == 'Sun') class="border-0" style="background-color: #eee;" @endif>
                         <div>{!! $checkinIcon !!}</div>
                         <div>{!! $checkoutIcon !!}</div>
                     </td>
