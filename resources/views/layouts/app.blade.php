@@ -136,6 +136,14 @@
                         </a>
                     </li>
                     @endcan
+                    @can('view_payroll')
+                    <li>
+                        <a href="{{ route('payroll') }}">
+                            <i class="fa-solid fa-money-check"></i>
+                            <span>Payroll</span>
+                        </a>
+                    </li>
+                    @endcan
                     
                     {{-- <li class="sidebar-dropdown">
                         <a href="#">

@@ -18,7 +18,6 @@
 
             <div class="card mb-3">
                 <div class="card-body">
-                    <h4 class="mb-4">Attendance records</h4>
                     <div class="row mb-3">
                         <div class="col-lg-4 py-2">
                             <select name="" class="form-select form-control-lg select-month">
@@ -51,12 +50,22 @@
                             <button class="btn btn-theme btn-block search-btn"><i class="fas fa-search"></i> SEARCH</button>
                         </div>
                     </div>
-                    <div class="attendance_overview_table mb-5">
-        
+
+                    <h5 class="mb-4">Payroll</h5>
+
+                    <div class="payroll_table mb-4">
+
+                    </div>
+
+                    <h5 class="mb-4">Attendance Overview</h5>
+
+                    <div class="attendance_overview_table mb-4">
+
                     </div>
 
 
-                    <div class="">
+                    <h5 class="mb-4">Attendance records</h5>
+                    <div class="mb-4">
                         <table class="table border table-bordered DataTable"  style="width:100%">
                             <thead>
                                 <th class="no-sort no-search"></th>
@@ -215,13 +224,25 @@
 
                 table.ajax.url(`/my-attendance/datatable/ssd?month=${month}&year=${year}`).load(); // datatable request with new data
             }
-
             attendanceOverview()
+
+            const payrollTable = () => {
+                let month = $('.select-month').val();
+                let year = $('.select-year').val()
+                $.ajax({
+                    url: `/my-payroll-table?&month=${month}&year=${year}`,
+                    method: 'GET',
+                    success: (res) => {
+                        $('.payroll_table').html(res)
+                    }
+                })
+            }
+            payrollTable()
 
             $('.search-btn').on('click', (e) => {
                 e.preventDefault()
-                
                 attendanceOverview()
+                payrollTable()
             })
 
         })

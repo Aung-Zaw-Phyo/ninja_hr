@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Salary;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use DarkGhostHunter\Larapass\WebAuthnAuthentication;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use DarkGhostHunter\Larapass\Contracts\WebAuthnAuthenticatable;
-use DarkGhostHunter\Larapass\WebAuthnAuthentication;
 
 class User extends Authenticatable implements WebAuthnAuthenticatable
 {
@@ -55,5 +56,9 @@ class User extends Authenticatable implements WebAuthnAuthenticatable
             return asset('storage/employee/'.$this->profile_img);
         }
         return null;
+    }
+
+    public function salaries () {
+        return $this->hasMany(Salary::class, 'user_id', 'id');
     }
 }

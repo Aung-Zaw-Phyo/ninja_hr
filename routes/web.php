@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MyPayrollController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepartmentController;
@@ -80,6 +82,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('attendance-scan/store', [AttendanceScanController::class, 'scanStore'])->name('attendance-scan.store');
     Route::get('my-attendance-overview-table', [MyAttendanceController::class, 'overviewTable']);
     Route::get('my-attendance/datatable/ssd', [MyAttendanceController::class, 'ssd']);
+    Route::get('my-payroll-table', [MyPayrollController::class, 'payrollTable']);
 
     Route::resource('company-setting', CompanySettingController::class)->only(['show', 'edit', 'update']);
+
+    Route::get('payroll', [PayrollController::class, 'payroll'])->name('payroll');
+    Route::get('payroll-table', [PayrollController::class, 'payrollTable']);
 });
