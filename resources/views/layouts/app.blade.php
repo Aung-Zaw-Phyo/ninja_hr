@@ -28,6 +28,9 @@
 
     {{-- select2 --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    {{-- Image Viewer --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.3/viewer.min.css" integrity="sha512-zdX1vpRJc7+VHCUJcExqoI7yuYbSFAbSWxscAoLF0KoUPvMSAK09BaOZ47UFdP4ABSXpevKfcD0MTVxvh0jLHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
@@ -120,6 +123,14 @@
                         </a>
                     </li>
                     @endcan
+                    @can('view_project')
+                    <li>
+                        <a href="{{ route('project.index') }}">
+                            <i class="fa-solid fa-toolbox"></i>
+                            <span>Project</span>
+                        </a>
+                    </li>
+                    @endcan
                     @can('view_attendance')
                     <li>
                         <a href="{{ route('attendance.index') }}">
@@ -198,7 +209,7 @@
                     <i class="fa-solid fa-user-clock"></i>
                     <p class="mb-0">Attendance</p>
                 </a>
-                <a href="">
+                <a href="{{ route('my-project.index') }}">
                     <i class="fa-solid fa-briefcase"></i>
                     <p class="mb-0">Project</p>
                 </a>
@@ -241,6 +252,9 @@
 
     {{-- select2 --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    {{-- Image Viewer --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.3/viewer.min.js" integrity="sha512-f8kZwYACKF8unHuRV7j/5ILZfflRncxHp1f6y/PKuuRpCVgpORNZMne1jrghNzTVlXabUXIg1iJ5PvhuAaau6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="{{ asset('vendor/larapass/js/larapass.js') }}"></script>
 

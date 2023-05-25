@@ -201,8 +201,53 @@ mark{
   border-radius: 10px;
 }
 
+.profile-thumbnail2 {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 3px;
+}
+
+.pdf-thumbnail {
+  display: inline-block;
+  width: 70px;
+  height: 80px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 3px;
+  text-align: center;
+  vertical-align: middle;
+  
+}
+
+.pdf-thumbnail i{
+  font-size: 38px;
+  color: #333;
+  margin-bottom: 3px;
+}
+.pdf-thumbnail p {
+  font-size: 13px;
+  color: #333;
+}
 
 
+.image-thumbnail{
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 3px;
+}
+
+#images img {
+  cursor: pointer;
+}
 
 
 /* ---------------- select 2 -------------------- */
