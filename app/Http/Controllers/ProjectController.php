@@ -222,17 +222,11 @@ class ProjectController extends Controller
 
         $project = Project::findOrFail($id);
 
-        $leaders = ProjectLeader::where('project_id', $project->id)->get();
-        foreach ($leaders as $leader) {
-            $leader->delete();
-        }
-
-        $members = ProjectMember::where('project_id', $project->id)->get();
-        foreach ($members as $member) {
-            $member->delete();
-        }
+        $project->leaders()->detach();
+        $project->members()->detach();
 
         $project->delete();
+
         return 'success';
     }
 }

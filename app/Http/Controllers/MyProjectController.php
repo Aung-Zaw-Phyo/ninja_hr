@@ -83,7 +83,7 @@ class MyProjectController extends Controller
     }
 
     public function show ($id) {
-        $project = Project::with('leaders', 'members')
+        $project = Project::with('leaders', 'members', 'tasks')
             ->where('id', $id)
             ->where(function($query) {
                 $query->whereHas('leaders', function ($q1)  {

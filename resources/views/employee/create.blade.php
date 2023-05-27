@@ -37,7 +37,7 @@
                                 </select>
                             </div>
                             <div class="form-outline mb-4">
-                                <input name='birthday' type="text" id="birthday" class="form-control form-control-lg birthday"/>
+                                <input name='birthday' type="text" id="birthday" class="form-control form-control-lg birthday active "/>
                                 <label class="form-label" for="birthday">Birthday</label>
                             </div>
                             <div class=" mb-4">
@@ -57,7 +57,7 @@
                                 </select>
                             </div>
                             <div class="form-outline mb-4">
-                                <input name='date_of_join' type="text" id="date_of_join" class="form-control form-control-lg date_of_join" />
+                                <input name='date_of_join' type="text" id="date_of_join" class="form-control form-control-lg date_of_join active " />
                                 <label class="form-label" for="date_of_join">Date Of Join</label>
                             </div>
                             <div class=" mb-4">
