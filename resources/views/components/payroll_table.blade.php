@@ -29,20 +29,28 @@
                     $checkinIcon = '';
                     $checkoutIcon = '';
                     if($attendance) {
-                        if ($attendance->checkin_time < $office_start_time) {
-                            $attendance_days += 0.5;
-                        }else if ($attendance->checkin_time > $office_start_time && $attendance->checkin_time < $break_start_time) {
-                            $attendance_days += 0.5;
+                        if($attendance->checkin_time){
+                            if ($attendance->checkin_time < $office_start_time) {
+                                $attendance_days += 0.5;
+                            }else if ($attendance->checkin_time > $office_start_time && $attendance->checkin_time < $break_start_time) {
+                                $attendance_days += 0.5;
+                            }else {
+                                $attendance_days += 0;
+                            }
                         }else {
                             $attendance_days += 0;
                         }
 
-                        if($attendance->checkout_time < $break_end_time) {
-                            $attendance_days += 0;
-                        }else if ($attendance->checkout_time > $break_end_time && $attendance->checkout_time < $office_end_time ) {
-                            $attendance_days += 0.5;
+                        if($attendance->checkout_time){
+                            if($attendance->checkout_time < $break_end_time) {
+                                $attendance_days += 0;
+                            }else if ($attendance->checkout_time > $break_end_time && $attendance->checkout_time < $office_end_time ) {
+                                $attendance_days += 0.5;
+                            }else {
+                                $attendance_days += 0.5;
+                            }
                         }else {
-                            $attendance_days += 0.5;
+                            $attendance_days += 0;
                         }
                     }
                 @endphp
