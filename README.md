@@ -10,9 +10,9 @@ HR or Management System Project
 - Employee login with fingerprint
 - Employee role and permission
 - Attendance system with pincode and QR Scan
-- Payroll (salary) system with employee attendance
-- Project management Ssystem
-- Sortable project tasks
+- Payroll (salary) management system by employee attendance
+- Project management system
+- Sortable project's tasks
 - Employee attendance pdf export 
 - ....
 
