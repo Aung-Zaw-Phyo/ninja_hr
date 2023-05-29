@@ -12,7 +12,7 @@
             <div class="text-center mb-3">
                 <img width="140" src="{{ asset('images/logo.png') }}" alt="NinjaHR Logo Image">
             </div>
-            <div class="card" style="height: 40vh;">
+            <div class="card" style="height: 45vh;">
                 <div class="card-body">
                     <h4 class="text-center">Login</h4>
                     <p class="text-muted text-center mb-4">Please fill the form to login.</p>

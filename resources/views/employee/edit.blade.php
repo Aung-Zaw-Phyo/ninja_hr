@@ -62,7 +62,7 @@
                                 <label class="form-label" for="date_of_join">Date Of Join</label>
                             </div>
                             <div class=" mb-4">
-                                <select type="text" name="is_present" id="is_present" class="form-select form-control-lg">
+                                <select type="text" name="is_present" id="is_present" class="form-select form-control-lg select-ninja">
                                     <option value="1" @if ($employee->is_present == 1) selected @endif>Yes</option>
                                     <option value="0" @if ($employee->is_present == 0) selected @endif>No</option>
                                 </select>
