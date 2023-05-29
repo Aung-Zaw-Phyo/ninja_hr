@@ -77,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('attendance', AttendanceController::class);
     Route::get('attendance/datatable/ssd', [AttendanceController::class, 'ssd']);
+    Route::get('attendance-pdf-download', [AttendanceController::class, 'pdfDownload']);
 
     Route::get('attendance-overview', [AttendanceController::class, 'overview'])->name('attendance.overview');
     Route::get('attendance-overview-table', [AttendanceController::class, 'overviewTable']);

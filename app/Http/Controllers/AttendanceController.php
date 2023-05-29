@@ -12,6 +12,7 @@ use App\Http\Requests\StoreAttendance;
 use App\Http\Requests\UpdateAttendance;
 use App\Models\CompanySetting;
 use Yajra\DataTables\Facades\DataTables;
+use PDF;
 
 class AttendanceController extends Controller
 {
@@ -158,5 +159,12 @@ class AttendanceController extends Controller
         $periods = new CarbonPeriod($startOfMonth, $endOfMonth);
         $attendances = CheckinCheckout::whereYear('date', $year)->whereMonth('date', $month)->get();
         return view('components.attendance_overview_table', compact('employees', 'company_setting', 'periods', 'attendances'))->render();
+    }
+
+
+    public function pdfDownload () {
+        $attendances = CheckinCheckout::with('employee')->get();
+        $pdf = PDF::loadView('pdf.attendance', ['attendances' => $attendances]);
+        return $pdf->download('attendance.pdf');
     }
 }

@@ -16,6 +16,7 @@
     @can('create_attendance')
         <a href="{{ route('attendance.create') }}" class="btn btn-theme"><i class="fas fa-plus-circle"></i> Create Attendance</a>
     @endcan
+    <a href="{{ url('attendance-pdf-download') }}" target="_blank" class="btn btn-dark btn-lg"><i class="fas fa-file-pdf"></i> PDF Download</a>
     <div class="card mt-3">
         <div class="card-body">
             <div class="">

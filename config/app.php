@@ -168,6 +168,7 @@ return [
          */
         Yajra\DataTables\DataTablesServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Mccarlosen\LaravelMpdf\LaravelMpdfServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -234,7 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-        
+        'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class,
 
     ],
 
