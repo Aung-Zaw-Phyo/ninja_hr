@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('title', 'Attendance')
-
+@section('extra_css')
+    <style>
+        .button-page-length, .button-page-length.active{
+            background: #4CD195 !important;
+            color: #fff !important;
+            border: none !important;
+            border-radius: 3px !important;
+            outline: none !important;
+        }
+    </style>
+@endsection
 @section('content')
     @can('create_attendance')
         <a href="{{ route('attendance.create') }}" class="btn btn-theme"><i class="fas fa-plus-circle"></i> Create Attendance</a>
@@ -29,6 +39,96 @@
 <script>
     $(document).ready(function () {
         var table = $('.DataTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"></i> PDF',
+                    className: 'btn btn-dark',
+                    orientation: 'portrait',
+                    pageSize: 'A4',
+                    title: 'Attendance',
+                    exportOptions: {
+                        columns: [ 1, 2, 3, 4]
+                    },
+                    customize: function (doc) {
+                        doc.content.splice(0,1);
+                        var now = new Date();
+                        var datetime = now.getDate() + "/"
+                                        + (now.getMonth()+1)  + "/" 
+                                        + now.getFullYear() + " "  
+                                        + now.getHours() + ":"  
+                                        + now.getMinutes() + ":" 
+                                        + now.getSeconds();
+                        doc.pageMargins = [20,40,20,30];
+                        doc.defaultStyle.fontSize = 8;
+                        doc.styles.tableHeader.fontSize = 8;
+                        doc.styles.tableBodyEven.alignment = 'center';
+                        doc.styles.tableBodyOdd.alignment = 'center';
+
+                        doc['header']=(function() {
+                            return {
+                                columns: [
+
+                                    {
+                                        alignment: 'left',
+                                        italics: true,
+                                        text: 'Attendance',
+                                        fontSize: 12,
+                                    },
+                                    {
+                                        alignment: 'right',
+                                        fontSize: 10,
+                                        text: `Export Time : ` + datetime,
+                                    }
+                                ],
+                                margin: 20
+                            }
+                        });
+
+                        doc['footer']=(function(page, pages) {
+                            return {
+                                columns: [
+                                    {
+                                        alignment: 'left',
+                                        text: '',
+                                    },
+                                    {
+                                        alignment: 'right',
+                                        text: ['page ', { text: page.toString() },  ' of ', { text: pages.toString() }],
+                                    }
+                                ],
+                                margin: [20,0,20,10]
+                            }
+                        });
+
+                        var objLayout = {};
+                        objLayout['hLineWidth'] = function(i) { return .5; };
+                        objLayout['vLineWidth'] = function(i) { return .5; };
+                        objLayout['hLineColor'] = function(i) { return '#aaa'; };
+                        objLayout['vLineColor'] = function(i) { return '#aaa'; };
+                        objLayout['paddingLeft'] = function(i) { return 4; };
+                        objLayout['paddingRight'] = function(i) { return 4; };
+                        doc.content[0].layout = objLayout;
+                        doc.content[0].table.widths = ['20%', '20%', '30%', '30%']
+                    }
+                }, 
+                {
+                    text: "<i class='fas fa-sync'></i> Refresh",
+                    className: 'btn btn-dark mx-1',
+                    action: function (e, dt, node, config) {
+                        dt.ajax.reload(null, false);
+                    }
+                },
+                {
+                    extend: 'pageLength',
+                    className: 'btn btn-dark',
+                },
+            ],
+            lengthMenu: [
+                [10, 25, 50, 100, 500],
+                ['10 rows', '25 rows', '50 rows', '100 rows', '500 rows'],
+            ],
             responsive: true,
             processing: true,
             serverSide: true,
@@ -67,8 +167,7 @@
                     next: "<i class='fa-solid fa-circle-arrow-right'></i>",
                     previous: "<i class='fa-solid fa-circle-arrow-left'></i>"
                 },
-            }
-
+            },
         });
 
         $(document).on('click', '.delete-btn', function (e) { //This is parent to child selector to know latest render data in datatable.
