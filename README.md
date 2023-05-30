@@ -16,7 +16,7 @@ HR or Management System Project
 - Employee attendance pdf export 
 - ....
 
-## What plug-in and package include in this project
+## What plug-in and package use in this project
 
 - Jquery Datatable (Serverside rendering)
 - Laravel spatie permission
@@ -62,3 +62,5 @@ HR or Management System Project
 ```bash
   php artisan serve
 ```
+- phone => 09123456789 
+- password => 123456
